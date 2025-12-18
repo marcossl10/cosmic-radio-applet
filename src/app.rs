@@ -94,7 +94,7 @@ impl cosmic::Application for AppModel {
     }
 
     fn view_window(&self, _id: Id) -> Element<'_, Self::Message> {
-        let title = widget::text("Web Radio").size(24);
+        let title = widget::text("COSMIC Radio").size(24);
         
         // Search Bar
         let search_input = text_input("Buscar estações (ex: Jazz)...", &self.search_query)
