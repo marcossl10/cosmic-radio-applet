@@ -33,4 +33,4 @@ install:
     install -Dm0644 resources/icon.svg {{icon-dst}}
 
 uninstall:
-    rm {{bin-dst}} {{desktop-dst}} {{icon-dst}}
+    rm {{bin-dst}} {{desktop-dst}} {{icon-dst}} {{appdata-dst}}
