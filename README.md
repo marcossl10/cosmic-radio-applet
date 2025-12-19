@@ -8,7 +8,7 @@
 
 A modern online radio player integrated into the COSMIC Desktop panel, developed exclusively for the COSMIC ecosystem using Rust and libcosmic.
 
-<img src="resources/banner.png" width="400" alt="Banner">
+<img src="resources/banner.svg" width="600" alt="Banner">
 
 ### ✨ Features
 
