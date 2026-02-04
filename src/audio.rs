@@ -45,7 +45,7 @@ impl AudioManager {
         }
     }
     
-    pub fn set_volume(&self, vol: f32) {
+    pub fn set_volume(&self, _vol: f32) {
         // Implementar controle de volume via IPC do MPV seria ideal,
         // mas por enquanto deixa sem ou reinicia?
         // MPV supports --volume arg at start.
