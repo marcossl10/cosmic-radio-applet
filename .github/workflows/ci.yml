@@ -154,9 +154,7 @@ jobs:
         uses: cachix/cachix-action@v14
         with:
           name: cosmic-radio-applet
-          # Set CACHIX_AUTH_TOKEN in repository secrets to enable push
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-          skipPush: ${{ secrets.CACHIX_AUTH_TOKEN == '' }}
+          skipPush: true
 
       - name: Restore Nix store cache
         uses: actions/cache@v4
