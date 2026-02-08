@@ -150,22 +150,6 @@ jobs:
             max-jobs = auto
             cores = 0
 
-      - name: Setup Cachix (optional, for caching Nix builds)
-        uses: cachix/cachix-action@v14
-        with:
-          name: cosmic-radio-applet
-          skipPush: true
-
-      - name: Restore Nix store cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/nix
-            /nix/store
-          key: nix-${{ runner.os }}-${{ hashFiles('**/flake.lock') }}
-          restore-keys: |
-            nix-${{ runner.os }}-
-
       - name: Run flake check
         run: nix flake check --show-trace
 
