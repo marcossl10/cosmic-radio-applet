@@ -1,0 +1,21 @@
+---
+# yamllint configuration for GitHub Actions workflows
+extends: default
+
+rules:
+  # Allow "on:" keyword in GitHub Actions
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+
+  # Allow longer lines for complex bash scripts
+  line-length:
+    max: 120
+    level: warning
+
+  # Be more permissive with document structure
+  document-start:
+    present: false
+
+  # Allow inline comments
+  comments:
+    min-spaces-from-content: 1

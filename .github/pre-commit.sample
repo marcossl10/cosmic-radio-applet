@@ -1,0 +1,42 @@
+#!/bin/bash
+# Pre-commit hook for COSMIC Radio Applet
+# Installation: cp .github/pre-commit.sample .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+
+set -e
+
+echo "Running pre-commit checks..."
+
+# Color codes for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Format check
+echo -e "${YELLOW}Checking code formatting...${NC}"
+if ! cargo fmt --all --check; then
+    echo -e "${RED}✗ Format check failed${NC}"
+    echo "Run 'cargo fmt --all' to fix formatting"
+    exit 1
+fi
+echo -e "${GREEN}✓ Format check passed${NC}"
+
+# Clippy check
+echo -e "${YELLOW}Running clippy...${NC}"
+if ! cargo clippy --all-targets --all-features -- -D warnings; then
+    echo -e "${RED}✗ Clippy check failed${NC}"
+    echo "Fix the warnings above before committing"
+    exit 1
+fi
+echo -e "${GREEN}✓ Clippy check passed${NC}"
+
+# Test suite
+echo -e "${YELLOW}Running tests...${NC}"
+if ! cargo test --locked; then
+    echo -e "${RED}✗ Tests failed${NC}"
+    echo "Fix the failing tests before committing"
+    exit 1
+fi
+echo -e "${GREEN}✓ Tests passed${NC}"
+
+echo -e "${GREEN}All pre-commit checks passed!${NC}"

@@ -1,6 +1,6 @@
 /target
 **/*.rs.bk
-Cargo.lock
+# Cargo.lock is committed for reproducible builds (this is an application)
 .env
 .idea
 .vscode

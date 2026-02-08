@@ -1,18 +1,23 @@
 [package]
 name = "cosmic-radio-applet"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
+[lib]
+name = "cosmic_radio_applet_lib"
+path = "src/lib.rs"
+test = true
 
 [dependencies]
-futures-util = "0.3.31"
 i18n-embed-fl = "0.10"
 rust-embed = "8.7.2"
-tokio = { version = "1.48.0", features = ["full"] }
-rodio = "0.19"
-reqwest = { version = "0.12", features = ["json", "blocking"] }
+tokio = { version = "1.48.0", features = ["rt-multi-thread", "macros"] }
+reqwest = { version = "0.12", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 url = "2.5"
+tracing = "0.1"
+thiserror = "2.0"
 
 [dependencies.i18n-embed]
 version = "0.16"
