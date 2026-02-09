@@ -99,10 +99,7 @@ mod audio_tests {
 
     #[test]
     fn test_validate_url_invalid_format() {
-        assert_eq!(
-            validate_url("not a url at all"),
-            Err("Invalid URL format")
-        );
+        assert_eq!(validate_url("not a url at all"), Err("Invalid URL format"));
     }
 
     #[test]

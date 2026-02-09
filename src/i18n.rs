@@ -1,11 +1,10 @@
-
-use std::sync::LazyLock;
 use i18n_embed::{
     fluent::{fluent_language_loader, FluentLanguageLoader},
     unic_langid::LanguageIdentifier,
     DefaultLocalizer, LanguageLoader, Localizer,
 };
 use rust_embed::RustEmbed;
+use std::sync::LazyLock;
 
 pub fn init(requested_languages: &[LanguageIdentifier]) {
     if let Err(why) = localizer().select(requested_languages) {
@@ -23,11 +22,15 @@ struct Localizations;
 
 pub static LANGUAGE_LOADER: LazyLock<FluentLanguageLoader> = LazyLock::new(|| {
     let loader: FluentLanguageLoader = fluent_language_loader!();
-    loader.load_fallback_language(&Localizations).expect("Error");
+    loader
+        .load_fallback_language(&Localizations)
+        .expect("Error");
     loader
 });
 
 #[macro_export]
 macro_rules! fl {
-    ($message_id:literal) => { i18n_embed_fl::fl!($crate::i18n::LANGUAGE_LOADER, $message_id) };
+    ($message_id:literal) => {
+        i18n_embed_fl::fl!($crate::i18n::LANGUAGE_LOADER, $message_id)
+    };
 }

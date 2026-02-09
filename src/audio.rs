@@ -63,7 +63,10 @@ impl AudioManager {
             .arg(&url)
             .spawn();
 
-        debug!("Spawned mpv for {} with IPC socket at {}", url, MPV_SOCKET_PATH);
+        debug!(
+            "Spawned mpv for {} with IPC socket at {}",
+            url, MPV_SOCKET_PATH
+        );
 
         match child {
             Ok(child) => {
@@ -113,17 +116,17 @@ impl AudioManager {
         // Try to connect to IPC socket
         let socket_path = Path::new(MPV_SOCKET_PATH);
         if !socket_path.exists() {
-            warn!("Cannot set volume: mpv IPC socket not found at {}", MPV_SOCKET_PATH);
+            warn!(
+                "Cannot set volume: mpv IPC socket not found at {}",
+                MPV_SOCKET_PATH
+            );
             return;
         }
 
         match UnixStream::connect(socket_path) {
             Ok(mut stream) => {
                 // Build JSON IPC command: {"command": ["set_property", "volume", VALUE]}
-                let command = format!(
-                    r#"{{"command": ["set_property", "volume", {}]}}"#,
-                    volume
-                );
+                let command = format!(r#"{{"command": ["set_property", "volume", {}]}}"#, volume);
                 let command_with_newline = format!("{}\n", command);
 
                 match stream.write_all(command_with_newline.as_bytes()) {
@@ -136,7 +139,10 @@ impl AudioManager {
                 }
             }
             Err(e) => {
-                error!("Failed to connect to mpv IPC socket at {}: {}", MPV_SOCKET_PATH, e);
+                error!(
+                    "Failed to connect to mpv IPC socket at {}: {}",
+                    MPV_SOCKET_PATH, e
+                );
             }
         }
     }
@@ -234,10 +240,7 @@ mod tests {
 
     #[test]
     fn test_validate_url_empty_string() {
-        assert_eq!(
-            AudioManager::validate_url(""),
-            Err("Invalid URL format")
-        );
+        assert_eq!(AudioManager::validate_url(""), Err("Invalid URL format"));
     }
 
     #[test]

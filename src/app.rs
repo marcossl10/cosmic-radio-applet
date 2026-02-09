@@ -155,11 +155,7 @@ impl cosmic::Application for AppModel {
                         .spacing(10)
                         .align_y(Alignment::Center)
                         .push(icon::from_name(status_icon).size(20))
-                        .push(
-                            widget::text(&station.name)
-                                .size(16)
-                                .width(Length::Fill),
-                        )
+                        .push(widget::text(&station.name).size(16).width(Length::Fill))
                         .push(
                             cosmic::iced::widget::button(icon::from_name(
                                 "media-playback-stop-symbolic",
@@ -190,8 +186,12 @@ impl cosmic::Application for AppModel {
                 .align_y(Alignment::Center)
                 .push(icon::from_name(volume_icon).size(20))
                 .push(
-                    slider(0.0..=100.0, self.config.volume as f32, Message::VolumeChanged)
-                        .width(Length::Fill),
+                    slider(
+                        0.0..=100.0,
+                        self.config.volume as f32,
+                        Message::VolumeChanged,
+                    )
+                    .width(Length::Fill),
                 )
                 .push(widget::text(volume_label).size(14).width(Length::Shrink))
         };
@@ -243,11 +243,12 @@ impl cosmic::Application for AppModel {
         }
 
         // Keyboard shortcuts hint
-        let shortcuts_hint = widget::text(fl!("shortcuts-hint"))
-            .size(11)
-            .class(cosmic::theme::Text::Color(cosmic::iced::Color::from_rgb(
-                0.5, 0.5, 0.5,
-            )));
+        let shortcuts_hint =
+            widget::text(fl!("shortcuts-hint"))
+                .size(11)
+                .class(cosmic::theme::Text::Color(cosmic::iced::Color::from_rgb(
+                    0.5, 0.5, 0.5,
+                )));
 
         let content = widget::column()
             .padding(20)
@@ -273,10 +274,10 @@ impl cosmic::Application for AppModel {
                     let new_id = Id::unique();
                     self.popup.replace(new_id);
                     if let Some(main_id) = self.core.main_window_id() {
-                        let popup_settings =
-                            self.core
-                                .applet
-                                .get_popup_settings(main_id, new_id, None, None, None);
+                        let popup_settings = self
+                            .core
+                            .applet
+                            .get_popup_settings(main_id, new_id, None, None, None);
                         get_popup(popup_settings)
                     } else {
                         warn!("No main window ID available");

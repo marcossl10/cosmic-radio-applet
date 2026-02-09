@@ -128,7 +128,10 @@ pub async fn search_stations(query: String) -> Result<Vec<Station>, Error> {
                             match serde_json::from_slice::<Vec<ApiStation>>(&bytes) {
                                 Ok(api_stations) => {
                                     debug!("Found {} stations from {}", api_stations.len(), server);
-                                    return Ok(api_stations.into_iter().map(Station::from).collect());
+                                    return Ok(api_stations
+                                        .into_iter()
+                                        .map(Station::from)
+                                        .collect());
                                 }
                                 Err(e) => {
                                     warn!("JSON parse error from {}: {}", server, e);
