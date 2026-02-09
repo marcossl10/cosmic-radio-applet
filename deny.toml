@@ -28,11 +28,19 @@ allow = [
     "MPL-2.0",
     "Zlib",
     "Unicode-DFS-2016",
+    "Unicode-3.0",
+    "BSL-1.0",
+    "OFL-1.1",
 ]
 
 exceptions = [
     # Add crates that need license exceptions
     # { allow = ["GPL-3.0"], name = "example-crate" },
+    { allow = ["unlicensed"], name = "cosmic-panel-config" },
+    { allow = ["unlicensed"], name = "dnd" },
+    { allow = ["unlicensed"], name = "mime" },
+    { allow = ["unlicensed"], name = "iced_accessibility" },
+    { allow = ["unlicensed"], name = "libcosmic" },
 ]
 
 [bans]
