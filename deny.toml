@@ -1,4 +1,5 @@
 # cargo-deny configuration
+# This file manages dependency policies
 # https://embarkstudios.github.io/cargo-deny/
 
 [advisories]
