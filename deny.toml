@@ -14,6 +14,7 @@ ignore = [
 
 [licenses]
 # Define acceptable licenses for dependencies
+# Note: License checks are skipped in CI due to git dependencies
 version = 2
 confidence-threshold = 0.8
 

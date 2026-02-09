@@ -2,6 +2,7 @@
 name = "cosmic-radio-applet"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 
 [lib]
 name = "cosmic_radio_applet_lib"
