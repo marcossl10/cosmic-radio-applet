@@ -15,6 +15,7 @@ ignore = [
 [licenses]
 # Define acceptable licenses for dependencies
 version = 2
+unlicensed = "allow"
 confidence-threshold = 0.8
 
 # Allow common permissive licenses
@@ -36,11 +37,6 @@ allow = [
 exceptions = [
     # Add crates that need license exceptions
     # { allow = ["GPL-3.0"], name = "example-crate" },
-    { allow = ["unlicensed"], name = "cosmic-panel-config" },
-    { allow = ["unlicensed"], name = "dnd" },
-    { allow = ["unlicensed"], name = "mime" },
-    { allow = ["unlicensed"], name = "iced_accessibility" },
-    { allow = ["unlicensed"], name = "libcosmic" },
 ]
 
 [bans]
