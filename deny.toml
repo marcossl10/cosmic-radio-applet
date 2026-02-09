@@ -15,7 +15,6 @@ ignore = [
 [licenses]
 # Define acceptable licenses for dependencies
 version = 2
-unlicensed = "allow"
 confidence-threshold = 0.8
 
 # Allow common permissive licenses
@@ -32,6 +31,7 @@ allow = [
     "Unicode-3.0",
     "BSL-1.0",
     "OFL-1.1",
+    "unlicensed",
 ]
 
 exceptions = [
