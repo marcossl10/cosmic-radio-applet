@@ -206,7 +206,8 @@ jobs:
         run: cargo install cargo-deny --locked
 
       - name: Check dependencies
-        run: cargo deny check advisories bans sources || echo "Dependency check failed, skipping..."
+        # Check dependencies but don't fail the build for advisory issues
+        run: cargo deny check advisories bans sources || echo "Dependency check failed (non-blocking), skipping..."
 
   # Final status check - all jobs must pass
   ci-success:
