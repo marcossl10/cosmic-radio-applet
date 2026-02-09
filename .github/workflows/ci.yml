@@ -206,7 +206,7 @@ jobs:
         run: cargo install cargo-deny --locked
 
       - name: Check dependencies
-        run: cargo deny check
+        run: cargo deny check advisories bans sources
 
   # Final status check - all jobs must pass
   ci-success:
