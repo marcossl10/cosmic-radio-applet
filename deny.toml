@@ -11,6 +11,7 @@ yanked = "deny"
 ignore = [
     # Add advisory IDs to ignore here if needed
     "RUSTSEC-2024-0436", # paste crate is unmaintained (transitive dep via accesskit)
+    "RUSTSEC-2024-0384", # instant crate is unmaintained (transitive dep via iced/libcosmic)
 ]
 
 [licenses]
