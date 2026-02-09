@@ -30,13 +30,6 @@ allow = [
     "Unicode-DFS-2016",
 ]
 
-# Deny copyleft licenses (can adjust based on needs)
-deny = [
-    "GPL-2.0",
-    "GPL-3.0",
-    "AGPL-3.0",
-]
-
 exceptions = [
     # Add crates that need license exceptions
     # { allow = ["GPL-3.0"], name = "example-crate" },

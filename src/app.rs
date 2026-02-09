@@ -394,25 +394,25 @@ impl cosmic::Application for AppModel {
                 }
             }
             Message::KeyboardEvent(event) => {
-                if let Event::Keyboard(keyboard_event) = event {
-                    if let cosmic::iced::keyboard::Event::KeyPressed { key, .. } = keyboard_event {
-                        match key {
-                            Key::Named(Named::Space) => {
-                                return self.update(Message::TogglePlayPause);
-                            }
-                            Key::Named(Named::ArrowUp) => {
-                                return self.update(Message::VolumeUp);
-                            }
-                            Key::Named(Named::ArrowDown) => {
-                                return self.update(Message::VolumeDown);
-                            }
-                            Key::Named(Named::Escape) => {
-                                if let Some(p) = self.popup.take() {
-                                    return destroy_popup(p);
-                                }
-                            }
-                            _ => {}
+                if let Event::Keyboard(cosmic::iced::keyboard::Event::KeyPressed { key, .. }) =
+                    event
+                {
+                    match key {
+                        Key::Named(Named::Space) => {
+                            return self.update(Message::TogglePlayPause);
                         }
+                        Key::Named(Named::ArrowUp) => {
+                            return self.update(Message::VolumeUp);
+                        }
+                        Key::Named(Named::ArrowDown) => {
+                            return self.update(Message::VolumeDown);
+                        }
+                        Key::Named(Named::Escape) => {
+                            if let Some(p) = self.popup.take() {
+                                return destroy_popup(p);
+                            }
+                        }
+                        _ => {}
                     }
                 }
             }

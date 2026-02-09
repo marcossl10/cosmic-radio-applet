@@ -79,7 +79,7 @@ pub enum ApiError {
     JsonParseFailed(#[from] serde_json::Error),
 
     #[error("API returned error: {status} - {message}")]
-    ApiErrorResponse { status: u16, message: String },
+    Response { status: u16, message: String },
 
     #[error("Network timeout after {0}s")]
     Timeout(u64),
